@@ -19,7 +19,7 @@ public class CompanyServiceImpl implements CompanyService {
 
     @Override
     public List<Company> search(String name, String countryId, Integer parentId) {
-        return companyRepository.findAll();
+        return companyRepository.findAllByName(name);
     }
 
     @Override
