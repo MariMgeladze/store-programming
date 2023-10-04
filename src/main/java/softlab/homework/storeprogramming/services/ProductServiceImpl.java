@@ -13,7 +13,7 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepository productRepository;
     @Override
     public List<Product> search(String name, String ean, Integer companyId, Integer id) {
-        return productRepository.findAll();
+        return productRepository.findAllByName(name);
     }
 
     @Override
