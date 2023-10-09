@@ -1,0 +1,74 @@
+1. CREATE DATABASE store
+    WITH
+    OWNER = postgres;
+
+2. CREATE TABLE countries
+(
+    id integer primary key,
+    iso_code_2 char(2) NOT NULL,
+    iso_code_3 char(3) NOT NULL,
+    name text ,
+    name_geo text,
+    )
+ create table users(
+    id serial primary key,
+	email varchar(50) not null UNIQUE,
+	password text,
+	first_name text,
+	last_name text,
+    last_login_date date,
+    active boolean,
+    changed_by integer,
+    changed_at TIMESTAMP DEFAULT now(),
+    created_by integer,
+    created_at TIMESTAMP DEFAULT now()
+)
+4.create table companies(
+id serial primary key,
+parent_id integer,
+country_id text,
+name text,
+name_geo text,
+active boolean not null DEFAULT true,
+changed_by integer,
+changed_at TIMESTAMP DEFAULT now(),
+created_by integer,
+created_at TIMESTAMP DEFAULT now()
+)
+5.create table products(
+id serial primary key,
+ean varchar(13) not null,
+name text,
+company_id integer,
+country_id integer,
+description text,
+active boolean not null DEFAULT true,
+changed_by integer,
+changed_at TIMESTAMP DEFAULT now(),
+created_by integer,
+created_at TIMESTAMP DEFAULT now()
+)
+6.insert into countries(id,iso_code_2,iso_code_3,name,name_geo)
+ values(1,AT,AUT,Austria,ავსტრია),
+       (2,FR,FRA,France,საფრანგეთი),
+       (3,GE,GEO,Georgia, საქართველო),
+       (4,DE,DEU,Germany,გერმანია),
+       (5,IT,ITA,Italy,იტალია);
+7. insert into  users (id,email,first_name,last_name)
+values(1,'mgeladze@gmail.com','marika','mgeladze'),
+(2,'mgeladze2@gmail.com','taso','baqanidze'),
+(3,'mgeladze3@gmail.com','gabo','baqanidze'),
+(4,'mgeladze4@gmail.com','nini','dolidze'),
+(5,'mgeladze5@gmail.com','guga','dolidze');
+8.insert into  companies (id,parent_id,country_id,name,name_geo)
+values(1,551,'austria','primark','პრიმარკი'),
+      (2,552,'france','wish','ვიში'),
+      (3,553,'georgia','taso','ტასო'),
+      (4,554,'germany','kiko','კიკო'),
+      (5,555,'italy','il-salone','ილ-სალონე');
+9.insert into  products (id,ean,name,company_id,country_id)
+values(1,1003005004001,'clothes',1,1),
+      (2,2003005004002,'face_creme',2,2),
+      (3,3003005004003,'clothes',3,3),
+      (4,4003005004004,'clothes',4,4),
+      (5,5003005004005,'shampoon',5,5);

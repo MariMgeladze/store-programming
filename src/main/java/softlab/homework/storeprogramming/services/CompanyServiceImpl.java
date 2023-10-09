@@ -4,10 +4,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import softlab.homework.storeprogramming.entities.Company;
 import softlab.homework.storeprogramming.entities.Product;
+import softlab.homework.storeprogramming.models.CreateCompany;
+import softlab.homework.storeprogramming.models.ProductCreateModel;
 import softlab.homework.storeprogramming.repositories.CompanyRepository;
 import softlab.homework.storeprogramming.repositories.ProductRepository;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -30,5 +31,28 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<Product> getCompanyProduct(Integer id) {
         return productRepository.findAllById(id);
+    }
+
+    @Override
+    public Product companyCreateProduct(Integer id, ProductCreateModel productCreateModel) {
+        Product product = new Product();
+        product.setId(id);
+        product.setName(productCreateModel.name());
+        product.setId(productCreateModel.companyId());
+        product.setCountryId(productCreateModel.countryId());
+        product.setEan(productCreateModel.ean());
+       productRepository.save(product);
+       return product;
+    }
+
+    @Override
+    public Company createNewCompany(Integer id, CreateCompany createCompany) {
+        Company company = new Company();
+        company.setId(id);
+        company.setName(createCompany.name());
+        company.setCountryId(createCompany.countryId());
+        company.setParentId(createCompany.parentId());
+        companyRepository.save(company);
+        return company;
     }
 }

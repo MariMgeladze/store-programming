@@ -1,11 +1,11 @@
 package softlab.homework.storeprogramming.controllers;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import softlab.homework.storeprogramming.entities.Company;
 import softlab.homework.storeprogramming.entities.Product;
+import softlab.homework.storeprogramming.models.CreateCompany;
+import softlab.homework.storeprogramming.models.ProductCreateModel;
 import softlab.homework.storeprogramming.repositories.ProductRepository;
 import softlab.homework.storeprogramming.services.CompanyService;
 
@@ -31,5 +31,15 @@ public class CompanyController {
     @GetMapping("companies/{id}/products")
     public List<Product>companyProduct(@PathVariable Integer id){
         return companyService.getCompanyProduct(id);
+    }
+
+    @PostMapping("companies/{id}/products")
+    public Product companyCreateProduct(@PathVariable Integer id, @RequestBody ProductCreateModel productCreateModel){
+        return companyService.companyCreateProduct(id,productCreateModel);
+    }
+
+    @PostMapping("companies/{id}")
+    public Company createNewCompany( @PathVariable Integer id, @RequestBody CreateCompany createCompany){
+        return companyService.createNewCompany(id,createCompany);
     }
 }

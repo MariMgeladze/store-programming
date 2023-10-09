@@ -11,4 +11,6 @@ public interface ProductService {
     List<Product> search(String name, Integer companyId, Integer id);
 
     Product getProduct(Integer id);
+
+
 }

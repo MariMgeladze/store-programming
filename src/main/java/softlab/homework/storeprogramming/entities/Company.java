@@ -1,9 +1,6 @@
 package softlab.homework.storeprogramming.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,7 +10,8 @@ import lombok.Setter;
 @Table(schema = "public", name = "companies")
 public class Company {
     @Id
-    @Column(name = "id")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator="company_seq_gen")
+    @SequenceGenerator(name="company_seq_gen", sequenceName="companies_id_seq",allocationSize = 1)
     private Integer id;
 
     private String name;
