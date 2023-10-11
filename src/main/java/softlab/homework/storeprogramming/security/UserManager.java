@@ -1,7 +1,6 @@
 package softlab.homework.storeprogramming.security;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -20,7 +19,7 @@ public class UserManager implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
      Optional<UserDomain> users = userRepository.findAllByUsername(username);
         if (users.isEmpty()) {
-            return null;
+            throw new RuntimeException("User not found");
         }
         return users.get();
     }
