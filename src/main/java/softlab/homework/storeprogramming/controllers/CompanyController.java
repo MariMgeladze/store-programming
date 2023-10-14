@@ -19,27 +19,27 @@ public class CompanyController {
     private final ProductRepository productRepository;
 
     @GetMapping("companies")
-    public List<Company> search(String name, String countryId,Integer id){
-    return companyService.search(name,countryId,id);
+    public List<Company> search(String name, String countryId, Integer id) {
+        return companyService.search(name, countryId, id);
     }
 
     @GetMapping("companies/{id}")
-    public Company company(@PathVariable Integer id){
+    public Company company(@PathVariable Integer id) {
         return companyService.getCompany(id);
     }
 
     @GetMapping("companies/{id}/products")
-    public List<Product>companyProduct(@PathVariable Integer id){
+    public List<Product> companyProduct(@PathVariable Integer id) {
         return companyService.getCompanyProduct(id);
     }
 
     @PostMapping("companies/{id}/products")
-    public Product companyCreateProduct(@PathVariable Integer id, @RequestBody ProductCreateModel productCreateModel){
-        return companyService.companyCreateProduct(id,productCreateModel);
+    public Product companyCreateProduct(@PathVariable Integer id, @RequestBody ProductCreateModel productCreateModel) {
+        return companyService.companyCreateProduct(id, productCreateModel);
     }
 
-    @PostMapping("companies/{id}")
-    public Company createNewCompany( @PathVariable Integer id, @RequestBody CreateCompany createCompany){
-        return companyService.createNewCompany(id,createCompany);
+    @PostMapping("companies")
+    public Company createNewCompany(@PathVariable Integer id, @RequestBody CreateCompany createCompany) {
+        return companyService.createNewCompany(id, createCompany);
     }
 }

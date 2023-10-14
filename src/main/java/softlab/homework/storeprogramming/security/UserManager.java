@@ -17,9 +17,9 @@ public class UserManager implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-     Optional<UserDomain> users = userRepository.findAllByUsername(username);
+        Optional<UserDomain> users = userRepository.findAllByUsername(username);
         if (users.isEmpty()) {
-            throw new RuntimeException("User not found");
+            throw new RuntimeException("User not found".formatted(username));
         }
         return users.get();
     }

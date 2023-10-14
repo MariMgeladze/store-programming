@@ -5,8 +5,8 @@ import softlab.homework.storeprogramming.entities.Product;
 
 import java.util.List;
 
-public interface ProductRepository extends JpaRepository<Product,Integer> {
-    List<Product> findAllById(Integer companyId);
+public interface ProductRepository extends JpaRepository<Product, Integer> {
+    List<Product> findAllByName(String name);
 
-    List<Product>findAllByName(String name);
+    List<Product> findAllByCompanyId(Integer id);
 }

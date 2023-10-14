@@ -29,20 +29,19 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public List<Product> getCompanyProduct(Integer id) {
-        return productRepository.findAllById(id);
+    public List<Product> getCompanyProduct(Integer companyId) {
+        return productRepository.findAllByCompanyId(companyId);
     }
 
     @Override
     public Product companyCreateProduct(Integer id, ProductCreateModel productCreateModel) {
         Product product = new Product();
-        product.setId(id);
         product.setName(productCreateModel.name());
         product.setId(productCreateModel.companyId());
         product.setCountryId(productCreateModel.countryId());
         product.setEan(productCreateModel.ean());
-       productRepository.save(product);
-       return product;
+        productRepository.save(product);
+        return product;
     }
 
     @Override
