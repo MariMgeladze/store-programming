@@ -1,0 +1,27 @@
+services:
+  app:
+    image: my-store-programming
+    build:
+      context: .
+    #ports:
+     #   - "8080:8080"
+    environment:
+       - spring.datasource.url=jdbc:postgresql://192.168.100.137:6432/marika
+       - spring.datasource.username=postgres
+       - spring.datasource.password=password
+
+    depends_on:
+      - postgres
+
+
+  postgres:
+    image: postgres:15-bookworm
+    restart: "always"
+    environment:
+      POSTGRES_PASSWORD: password
+    #ports:
+     # - "6432:5432"
+    volumes:
+      - ./files/pg_data:/var/lib/postgresql/data
+
+
