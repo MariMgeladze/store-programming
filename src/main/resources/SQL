@@ -48,7 +48,7 @@ changed_at TIMESTAMP DEFAULT now(),
 created_by integer,
 created_at TIMESTAMP DEFAULT now()
 )
-6.insert into countries(id,iso_code_2,iso_code_3,name,name_geo)
+6.insert into countries (id,iso_code_2,iso_code_3,name,name_geo)
  values(1,AT,AUT,Austria,ავსტრია),
        (2,FR,FRA,France,საფრანგეთი),
        (3,GE,GEO,Georgia, საქართველო),
@@ -60,12 +60,14 @@ values(1,'mgeladze@gmail.com','marika','mgeladze'),
 (3,'mgeladze3@gmail.com','gabo','baqanidze'),
 (4,'mgeladze4@gmail.com','nini','dolidze'),
 (5,'mgeladze5@gmail.com','guga','dolidze');
+
 8.insert into  companies (id,parent_id,country_id,name,name_geo)
 values(1,551,'austria','primark','პრიმარკი'),
       (2,552,'france','wish','ვიში'),
       (3,553,'georgia','taso','ტასო'),
       (4,554,'germany','kiko','კიკო'),
       (5,555,'italy','il-salone','ილ-სალონე');
+
 9.insert into  products (id,ean,name,company_id,country_id)
 values(1,1003005004001,'clothes',1,1),
       (2,2003005004002,'face_creme',2,2),
